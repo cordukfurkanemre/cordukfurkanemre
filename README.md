@@ -15,4 +15,4 @@ I enjoy building projects, exploring different technologies, and improving my de
 ### 📫 Connect with me
 
 - LinkedIn: [Furkan Emre Çördük](https://www.linkedin.com/in/cordukfurkanemre/)
-- Website: https://www.cordukfurkanemre.com
+- Website: [cordukfurkanemre.com](https://www.cordukfurkanemre.com)
