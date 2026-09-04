@@ -1,18 +1,27 @@
 # Hi, I'm Furkan 👋
 
-### Junior Software Developer
+### Software Developer
 
-I'm a Computer Programming student interested in software development and backend technologies.
+I'm a Computer Programming student focused on backend development, automation, and web technologies.
 
-I enjoy building projects, exploring different technologies, and improving my development skills through hands-on experience.
+I build practical software projects with C#, Python, databases, and modern web technologies. I also work on [**BaveSoftware**](https://bavesoftware.com/), developing and managing web-based solutions for businesses.
 
 ### 🛠️ Technologies & Tools
 
+- **Languages:** C#, Python, JavaScript, SQL
+- **Backend:** .NET, REST APIs
+- **Automation:** Selenium, BeautifulSoup
 - **Databases:** MySQL, SQLite
-- **Tools:** Git, GitHub, Visual Studio, DBeaver
-- **Interests:** Backend Development, Software Development & Software Engineering
+- **Web:** HTML, CSS
+- **Cloud & Deployment:** Cloudflare Workers, Cloudflare Pages
+- **Tools:** Git, GitHub, Visual Studio, VS Code, DBeaver
+- **Currently Exploring:** AI / LLM Integration, Unity
 
-### 📫 Connect with me
+### 🎯 Interests
 
-- LinkedIn: [Furkan Emre Çördük](https://www.linkedin.com/in/cordukfurkanemre/)
-- Website: [cordukfurkanemre.com](https://www.cordukfurkanemre.com)
+Backend Development, Software Engineering, Automation, Web Development
+
+### 🔗 Connect
+
+- [LinkedIn](https://www.linkedin.com/in/cordukfurkanemre/)
+- [Portfolio](https://cordukfurkanemre.com)
