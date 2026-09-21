@@ -109,13 +109,24 @@ def heatmap(days, counts, restricted=0):
     best=max(counts,key=counts.get)
 
     css='''<style>
-    @keyframes cell{0%{opacity:0;transform:translateY(-8px)}100%{opacity:1;transform:translateY(0)}}
-    .c{opacity:0;animation:cell .42s cubic-bezier(.2,.8,.2,1) both}
+    @keyframes cell{
+      0%{opacity:0;transform:translateY(-7px);filter:none}
+      48%{opacity:1;transform:translateY(0);fill:#69f0a0;filter:drop-shadow(0 0 5px #39d353)}
+      100%{opacity:1;transform:translateY(0);filter:none}
+    }
+    @keyframes sweep{
+      0%{opacity:0;transform:translateX(0)}
+      8%{opacity:.9}
+      92%{opacity:.9}
+      100%{opacity:0;transform:translateX(var(--travel))}
+    }
+    .c{opacity:0;animation:cell .62s cubic-bezier(.2,.8,.2,1) both}
+    .sweep{animation:sweep 2.8s ease-in-out both;transform-origin:left center}
     text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-    @media(prefers-reduced-motion:reduce){.c{animation:none;opacity:1}}
+    @media(prefers-reduced-motion:reduce){.c{animation:none;opacity:1}.sweep{display:none}}
     </style>'''
     parts=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',css,
-           '<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#0d1420"/><stop offset="1" stop-color="#0a0e14"/></linearGradient></defs>',
+           '<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#0d1420"/><stop offset="1" stop-color="#0a0e14"/></linearGradient><linearGradient id="beam"><stop stop-color="#69f0a0" stop-opacity="0"/><stop offset=".5" stop-color="#69f0a0" stop-opacity=".8"/><stop offset="1" stop-color="#69f0a0" stop-opacity="0"/></linearGradient><filter id="blur"><feGaussianBlur stdDeviation="5"/></filter></defs>',
            f'<rect width="{width}" height="{height}" rx="12" fill="url(#bg)"/><rect x=".5" y=".5" width="{width-1}" height="{height-1}" rx="12" fill="none" stroke="#1f6feb" stroke-opacity=".55"/>',
            '<line x1="0" y1="30" x2="100%" y2="30" stroke="#1f6feb" stroke-opacity=".35"/>']
     for i,color in enumerate(['#ff5f56','#ffbd2e','#27c93f']):
@@ -131,8 +142,9 @@ def heatmap(days, counts, restricted=0):
         parts.append(f'<text x="22" y="{top+row*step+9.5}" fill="#7d8590" font-size="9">{label}</text>')
     for d in ordered:
         key=d.isoformat(); offset=(d-start).days; col,row=divmod(offset,7)
-        delay=col*.018+row*.045
+        delay=col*.045+row*.035
         parts.append(f'<rect class="c" x="{left+col*step}" y="{top+row*step}" width="{cell}" height="{cell}" rx="2.5" fill="{palette[level(counts[key])]}" style="animation-delay:{delay:.3f}s"><title>{key}: {counts[key]} contributions</title></rect>')
+    parts.append(f'<rect class="sweep" x="{left-10}" y="{top-5}" width="28" height="{7*step+10}" rx="14" fill="url(#beam)" filter="url(#blur)" style="--travel:{(cols-1)*step}px"/>')
     legend_y=top+7*step+7; legend_x=width-145
     parts.append(f'<text x="{legend_x}" y="{legend_y+9}" fill="#7d8590" font-size="10" text-anchor="end">Less</text>')
     for i,color in enumerate(palette):
