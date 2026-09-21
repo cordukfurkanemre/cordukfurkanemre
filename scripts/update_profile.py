@@ -3,6 +3,7 @@ from html.parser import HTMLParser
 from urllib.request import Request, urlopen
 from pathlib import Path
 import json
+import os
 import re
 ROOT = Path(__file__).resolve().parents[1]
 class Calendar(HTMLParser):
@@ -28,6 +29,44 @@ class Calendar(HTMLParser):
     def handle_endtag(self, tag):
         if tag == 'tool-tip': self.tip = None
 
+def fetch_private_calendar(token):
+    query = '''query($login:String!,$from:DateTime!,$to:DateTime!){
+      viewer{login}
+      user(login:$login){contributionsCollection(from:$from,to:$to){
+        restrictedContributionsCount
+        contributionCalendar{totalContributions weeks{contributionDays{date contributionCount contributionLevel}}}
+      }}
+    }'''
+    today=date.today()
+    payload=json.dumps({'query':query,'variables':{
+        'login':'cordukfurkanemre',
+        'from':f'{today-timedelta(days=365)}T00:00:00Z',
+        'to':f'{today}T23:59:59Z'
+    }}).encode()
+    req=Request('https://api.github.com/graphql',data=payload,headers={
+        'Authorization':f'Bearer {token}','Content-Type':'application/json','User-Agent':'profile-calendar'
+    })
+    with urlopen(req,timeout=30) as response:
+        result=json.loads(response.read())
+    if result.get('errors'):
+        raise RuntimeError(f'GitHub GraphQL error: {result["errors"][0]["message"]}')
+    if result['data']['viewer']['login'].lower() != 'cordukfurkanemre':
+        raise RuntimeError('PROFILE_TOKEN must belong to cordukfurkanemre')
+    collection=result['data']['user']['contributionsCollection']
+    calendar=collection['contributionCalendar']
+    counts={d['date']:d['contributionCount'] for week in calendar['weeks'] for d in week['contributionDays']}
+    if sum(counts.values()) != calendar['totalContributions']:
+        raise RuntimeError('GraphQL contribution total does not match calendar cells')
+    return counts, collection['restrictedContributionsCount']
+
+def fetch_public_calendar():
+    req=Request('https://github.com/users/cordukfurkanemre/contributions',headers={'User-Agent':'profile-calendar'})
+    with urlopen(req,timeout=30) as response:
+        parser=Calendar(); parser.feed(response.read().decode())
+    if set(parser.days) != set(parser.counts) or len(parser.days) < 300:
+        raise RuntimeError('Incomplete public contribution calendar')
+    return parser.counts
+
 def wrap(body, height):
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="860" height="{height}" viewBox="0 0 860 {height}">
 <style>text{{font-family:Consolas,monospace}}.r{{animation:show .7s both;animation-delay:var(--d,0s)}}@keyframes show{{from{{opacity:0;transform:translateY(5px)}}to{{opacity:1;transform:translateY(0)}}}}@media(prefers-reduced-motion:reduce){{.r{{animation:none}}}}</style>
@@ -41,7 +80,7 @@ def profile():
         b += f'<g class="r" style="--d:{.2+i*.25}s"><text x="32" y="{133+i*42}" fill="#788391" font-size="18">{k}</text><text x="148" y="{133+i*42}" fill="#e6edf3" font-size="22">{v}</text></g>'
     b += '<text class="r" style="--d:1.1s" x="32" y="266" fill="#78dfa1" font-size="16">❯ <tspan fill="#788391">_</tspan></text>'
     return wrap(b,292)
-def heatmap(days, counts):
+def heatmap(days, counts, restricted=0):
     palette=['#161b22','#0e4429','#006d32','#26a641','#39d353','#69f0a0']
     ordered=[date.fromisoformat(key) for key in sorted(days)]
     first,last=ordered[0],ordered[-1]
@@ -108,14 +147,17 @@ def heatmap(days, counts):
     parts.append(f'<text x="{width-22}" y="{sep+49}" fill="#7d8590" font-size="12" text-anchor="end">best day <tspan fill="#f2cc60" font-weight="700">{counts[best]}</tspan> on {best}</text></svg>')
     return ''.join(parts)
 def main():
-    req=Request('https://github.com/users/cordukfurkanemre/contributions',headers={'User-Agent':'profile-calendar'})
-    with urlopen(req,timeout=30) as response:
-        p=Calendar(); p.feed(response.read().decode())
-    if set(p.days) != set(p.counts): raise RuntimeError('Contribution counts missing')
-    if len(p.days)<300: raise RuntimeError('Incomplete calendar; existing assets preserved')
+    token=os.environ.get('PROFILE_TOKEN')
+    if token:
+        counts,restricted=fetch_private_calendar(token)
+        source=f'authenticated calendar ({restricted} private contributions)'
+    else:
+        counts=fetch_public_calendar(); restricted=0
+        source='public calendar; set PROFILE_TOKEN to include private contributions'
+    days={key:0 for key in counts}
     (ROOT/'assets').mkdir(exist_ok=True); (ROOT/'data').mkdir(exist_ok=True)
     (ROOT/'assets/profile.svg').write_text(profile(),encoding='utf-8')
-    (ROOT/'assets/contributions.svg').write_text(heatmap(p.days, p.counts),encoding='utf-8')
-    (ROOT/'data/contributions.json').write_text(json.dumps({d: {'level': p.days[d], 'count': p.counts[d]} for d in p.days},sort_keys=True,indent=2)+'\n',encoding='utf-8')
-    print(f'Generated assets from {len(p.days)} real contribution days')
+    (ROOT/'assets/contributions.svg').write_text(heatmap(days,counts,restricted),encoding='utf-8')
+    (ROOT/'data/contributions.json').write_text(json.dumps({d:{'count':counts[d]} for d in days},sort_keys=True,indent=2)+'\n',encoding='utf-8')
+    print(f'Generated {len(days)} days and {sum(counts.values())} contributions from {source}')
 if __name__=='__main__': main()

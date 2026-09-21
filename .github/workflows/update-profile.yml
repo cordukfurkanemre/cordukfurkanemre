@@ -17,6 +17,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python scripts/update_profile.py
+        env:
+          PROFILE_TOKEN: ${{ secrets.PROFILE_TOKEN }}
       - name: Commit refreshed artwork
         run: |
           git config user.name 'github-actions[bot]'
