@@ -1,52 +1,55 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="860" height="250" viewBox="0 0 860 250" role="img" aria-labelledby="title desc">
-  <title id="title">Furkan Emre Çördük</title>
-  <desc id="desc">Junior Software Developer focused on Backend Development</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="300" viewBox="0 0 860 300" role="img" aria-labelledby="title desc">
+  <title id="title">Furkan Emre Çördük — developer profile</title>
+  <desc id="desc">Animated TypeScript code showing Furkan's role and focus</desc>
   <defs>
-    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
-      <stop stop-color="#0d1117"/>
-      <stop offset="1" stop-color="#111827"/>
-    </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-      <stop stop-color="#58a6ff"/>
-      <stop offset=".52" stop-color="#39d353"/>
-      <stop offset="1" stop-color="#22d3ee"/>
-    </linearGradient>
-    <clipPath id="name-reveal">
-      <rect x="0" y="0" width="0" height="54">
-        <animate attributeName="width" from="0" to="600" dur="1.8s" fill="freeze" calcMode="spline" keySplines=".22 1 .36 1"/>
-      </rect>
-    </clipPath>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0d1117"/><stop offset="1" stop-color="#111827"/></linearGradient>
+    <linearGradient id="status" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#58a6ff"/><stop offset=".5" stop-color="#39d353"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+    <clipPath id="line1"><rect x="0" y="0" width="0" height="32"><animate attributeName="width" from="0" to="340" begin=".15s" dur=".75s" fill="freeze"/></rect></clipPath>
+    <clipPath id="line2"><rect x="0" y="0" width="0" height="32"><animate attributeName="width" from="0" to="590" begin=".8s" dur=".9s" fill="freeze"/></rect></clipPath>
+    <clipPath id="line3"><rect x="0" y="0" width="0" height="32"><animate attributeName="width" from="0" to="650" begin="1.55s" dur="1s" fill="freeze"/></rect></clipPath>
+    <clipPath id="line4"><rect x="0" y="0" width="0" height="32"><animate attributeName="width" from="0" to="570" begin="2.4s" dur=".9s" fill="freeze"/></rect></clipPath>
+    <clipPath id="line5"><rect x="0" y="0" width="0" height="32"><animate attributeName="width" from="0" to="55" begin="3.15s" dur=".25s" fill="freeze"/></rect></clipPath>
   </defs>
   <style>
-    text { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
-    .enter { opacity:0; transform:translateY(8px); animation:enter .65s cubic-bezier(.2,.8,.2,1) forwards; }
-    .role { animation-delay:1.15s; }
-    .focus { animation-delay:1.45s; }
-    .cursor { animation:blink .8s steps(1) infinite; }
-    @keyframes enter { to { opacity:1; transform:translateY(0); } }
-    @keyframes blink { 50% { opacity:0; } }
-    @media (prefers-reduced-motion:reduce) { .enter { opacity:1; transform:none; animation:none; } .cursor { animation:none; } }
+    text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+    .caret{animation:blink .8s 3.4s steps(1) infinite;opacity:0}
+    @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+    @media(prefers-reduced-motion:reduce){.caret{opacity:1;animation:none}}
   </style>
 
-  <rect x="1" y="1" width="858" height="248" rx="18" fill="url(#background)" stroke="#30363d"/>
-  <g transform="translate(64 50)" clip-path="url(#name-reveal)">
-    <text x="0" y="38" fill="#f0f6fc" font-size="36" font-weight="700">Furkan Emre Çördük</text>
-  </g>
-  <rect class="cursor" x="445" y="57" width="3" height="38" rx="1" fill="#58a6ff">
-    <animate attributeName="x" from="64" to="445" dur="1.8s" fill="freeze" calcMode="spline" keySplines=".22 1 .36 1"/>
-  </rect>
+  <rect x="1" y="1" width="858" height="298" rx="17" fill="url(#background)" stroke="#30363d"/>
+  <rect x="1" y="1" width="858" height="43" rx="17" fill="#161b22"/>
+  <rect x="1" y="27" width="858" height="17" fill="#161b22"/>
+  <circle cx="22" cy="22" r="5" fill="#ff5f57"/><circle cx="40" cy="22" r="5" fill="#febc2e"/><circle cx="58" cy="22" r="5" fill="#28c840"/>
+  <path d="M91 1h127l13 13v30H91z" fill="#0d1117" stroke="#30363d"/>
+  <circle cx="109" cy="22" r="7" fill="#3178c6"/><text x="106" y="26" fill="#fff" font-size="9" font-weight="700">TS</text>
+  <text x="124" y="27" fill="#c9d1d9" font-size="13">profile.ts</text>
+  <line x1="1" y1="44" x2="859" y2="44" stroke="#30363d"/>
+  <rect x="1" y="44" width="52" height="232" fill="#0b1017"/>
 
-  <g class="enter role">
-    <text x="64" y="137" fill="#8b949e" font-size="15">ROLE</text>
-    <text x="143" y="137" fill="#e6edf3" font-size="20">Junior Software Developer</text>
-  </g>
-  <g class="enter focus">
-    <text x="64" y="181" fill="#8b949e" font-size="15">FOCUS</text>
-    <text x="143" y="181" fill="#e6edf3" font-size="20">Backend Development</text>
+  <g fill="#484f58" font-size="13" text-anchor="end">
+    <text x="38" y="86">1</text><text x="38" y="126">2</text><text x="38" y="166">3</text><text x="38" y="206">4</text><text x="38" y="246">5</text>
   </g>
 
-  <rect x="64" y="211" width="732" height="2" rx="1" fill="#21262d"/>
-  <rect x="64" y="211" width="0" height="2" rx="1" fill="url(#accent)">
-    <animate attributeName="width" from="0" to="732" begin="1.25s" dur="1.5s" fill="freeze" calcMode="spline" keySplines=".22 1 .36 1"/>
+  <g transform="translate(72 66)" clip-path="url(#line1)" font-size="21">
+    <text y="20"><tspan fill="#ff7b72">const</tspan><tspan fill="#d2a8ff"> developer</tspan><tspan fill="#c9d1d9"> = {</tspan></text>
+  </g>
+  <g transform="translate(72 106)" clip-path="url(#line2)" font-size="21">
+    <text y="20"><tspan fill="#79c0ff">  name</tspan><tspan fill="#c9d1d9">: </tspan><tspan fill="#a5d6ff">"Furkan Emre Çördük"</tspan><tspan fill="#c9d1d9">,</tspan></text>
+  </g>
+  <g transform="translate(72 146)" clip-path="url(#line3)" font-size="21">
+    <text y="20"><tspan fill="#79c0ff">  role</tspan><tspan fill="#c9d1d9">: </tspan><tspan fill="#a5d6ff">"Junior Software Developer"</tspan><tspan fill="#c9d1d9">,</tspan></text>
+  </g>
+  <g transform="translate(72 186)" clip-path="url(#line4)" font-size="21">
+    <text y="20"><tspan fill="#79c0ff">  focus</tspan><tspan fill="#c9d1d9">: </tspan><tspan fill="#a5d6ff">"Backend Development"</tspan></text>
+  </g>
+  <g transform="translate(72 226)" clip-path="url(#line5)" font-size="21"><text y="20" fill="#c9d1d9">};</text></g>
+  <rect class="caret" x="100" y="228" width="3" height="25" rx="1" fill="#58a6ff"/>
+
+  <rect x="1" y="276" width="858" height="23" rx="0" fill="#0b1017"/>
+  <rect x="1" y="297" width="858" height="2" rx="1" fill="url(#status)">
+    <animate attributeName="width" from="0" to="858" begin="2.5s" dur="1.2s" fill="freeze"/>
   </rect>
+  <text x="70" y="292" fill="#8b949e" font-size="11">TypeScript</text>
+  <text x="790" y="292" fill="#8b949e" font-size="11">UTF-8</text>
 </svg>
