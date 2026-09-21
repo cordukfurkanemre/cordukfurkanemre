@@ -1,27 +1,12 @@
-# Hi, I'm Furkan 👋
+<div align="center">
 
-### Software Developer
+### `furkan@github ~ $ whoami`
+<img src="./assets/profile.svg" width="860" alt="Furkan Emre Çördük — Junior Software Developer — Backend Development" />
 
-I'm a Computer Programming student focused on backend development, automation, and web technologies.
+### `furkan@github ~ $ ./contributions.sh`
+<img src="./assets/contributions.svg" width="860" alt="GitHub contribution calendar" />
 
-I build practical software projects with C#, Python, databases, and modern web technologies. I also work on [**BaveSoftware**](https://bavesoftware.com/), developing and managing web-based solutions for businesses.
+### `furkan@github ~ $ ./connect.sh`
+[LinkedIn](https://www.linkedin.com/in/cordukfurkanemre/) · [Portfolio](https://cordukfurkanemre.com)
 
-### 🛠️ Technologies & Tools
-
-- **Languages:** C#, Python, JavaScript, SQL
-- **Backend:** .NET, REST APIs
-- **Automation:** Selenium, BeautifulSoup
-- **Databases:** MySQL, SQLite
-- **Web:** HTML, CSS
-- **Cloud & Deployment:** Cloudflare Workers, Cloudflare Pages
-- **Tools:** Git, GitHub, Visual Studio, VS Code, DBeaver
-- **Currently Exploring:** AI / LLM Integration, Unity
-
-### 🎯 Interests
-
-Backend Development, Software Engineering, Automation, Web Development
-
-### 🔗 Connect
-
-- [LinkedIn](https://www.linkedin.com/in/cordukfurkanemre/)
-- [Portfolio](https://cordukfurkanemre.com)
+</div>
