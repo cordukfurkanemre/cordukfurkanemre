@@ -8,6 +8,6 @@
 
 <br />
 
-<a href="https://www.linkedin.com/in/cordukfurkanemre/"><img src="./assets/linkedin.svg" width="190" alt="LinkedIn" /></a>&nbsp;&nbsp;<a href="https://cordukfurkanemre.com"><img src="./assets/portfolio.svg" width="190" alt="Portfolio" /></a>
+<a href="https://www.linkedin.com/in/cordukfurkanemre/"><img src="./assets/linkedin.svg" width="320" alt="LinkedIn" /></a>&nbsp;&nbsp;<a href="https://cordukfurkanemre.com"><img src="./assets/portfolio.svg" width="320" alt="Portfolio" /></a>
 
 </div>
