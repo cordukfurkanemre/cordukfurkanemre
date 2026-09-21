@@ -6,6 +6,8 @@
 
 <img src="./assets/profile.svg" width="860" alt="Furkan Emre Çördük — Junior Software Developer — Backend Development" />
 
-[LinkedIn](https://www.linkedin.com/in/cordukfurkanemre/) · [Portfolio](https://cordukfurkanemre.com)
+<br />
+
+<a href="https://www.linkedin.com/in/cordukfurkanemre/"><img src="./assets/linkedin.svg" width="190" alt="LinkedIn" /></a>&nbsp;&nbsp;<a href="https://cordukfurkanemre.com"><img src="./assets/portfolio.svg" width="190" alt="Portfolio" /></a>
 
 </div>
