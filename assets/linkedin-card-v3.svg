@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="385" height="150" viewBox="0 0 385 150" role="img" aria-labelledby="title">
+  <title id="title">Open LinkedIn profile</title>
+  <defs><linearGradient id="liAccent" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#58a6ff"/><stop offset="1" stop-color="#0a66c2"/></linearGradient></defs>
+  <style>
+    text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}.content{opacity:0;transform:translateX(-7px);animation:enter .6s .15s cubic-bezier(.2,.8,.2,1) forwards}.logo{animation:pop .55s .3s cubic-bezier(.2,1.4,.4,1) both;transform-origin:48px 60px}.accent{stroke-dasharray:120;stroke-dashoffset:120;animation:draw .9s ease-out forwards}.arrow{animation:nudge 1.5s 1s ease-in-out infinite}@keyframes enter{to{opacity:1;transform:translateX(0)}}@keyframes pop{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}@keyframes draw{to{stroke-dashoffset:0}}@keyframes nudge{50%{transform:translate(4px,-4px)}}@media(prefers-reduced-motion:reduce){.content,.logo{opacity:1;transform:none;animation:none}.accent{stroke-dashoffset:0;animation:none}.arrow{animation:none}}
+  </style>
+  <rect x="1" y="1" width="383" height="148" rx="14" fill="#0d1117" stroke="#30363d"/>
+  <path class="accent" d="M2 30V15A13 13 0 0 1 15 2h86" fill="none" stroke="url(#liAccent)" stroke-width="3" stroke-linecap="round"/>
+  <g class="logo"><rect x="26" y="38" width="44" height="44" rx="9" fill="#0a66c2"/><text x="36" y="70" fill="#fff" font-family="Arial,sans-serif" font-size="28" font-weight="700">in</text></g>
+  <g class="content">
+    <text x="88" y="48" fill="#58a6ff" font-size="12">&lt;social /&gt;</text><text x="88" y="76" fill="#f0f6fc" font-size="25" font-weight="700">LinkedIn</text>
+    <text x="26" y="106" fill="#8b949e" font-size="13">Professional network</text><text x="26" y="130" fill="#6e7681" font-size="12">in/cordukfurkanemre</text>
+    <g class="arrow"><rect x="326" y="91" width="34" height="34" rx="8" fill="#161b22" stroke="#30363d"/><text x="336" y="115" fill="#58a6ff" font-size="20">↗</text></g>
+  </g>
+</svg>
