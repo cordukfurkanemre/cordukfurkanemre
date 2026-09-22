@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="385" height="150" viewBox="0 0 385 150" role="img" aria-labelledby="title">
+  <title id="title">Open portfolio website</title>
+  <defs><linearGradient id="portfolioAccent" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#39d353"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>
+  <style>
+    text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+    .content{opacity:0;transform:translateX(-7px);animation:enter .6s .3s cubic-bezier(.2,.8,.2,1) forwards}
+    .accent{stroke-dasharray:120;stroke-dashoffset:120;animation:draw .9s .15s ease-out forwards}
+    .arrow{animation:nudge 1.5s 1.15s ease-in-out infinite}
+    @keyframes enter{to{opacity:1;transform:translateX(0)}}@keyframes draw{to{stroke-dashoffset:0}}@keyframes nudge{50%{transform:translate(4px,-4px)}}
+    @media(prefers-reduced-motion:reduce){.content{opacity:1;transform:none;animation:none}.accent{stroke-dashoffset:0;animation:none}.arrow{animation:none}}
+  </style>
+  <rect x="1" y="1" width="383" height="148" rx="14" fill="#0d1117" stroke="#30363d"/>
+  <path class="accent" d="M2 30V15A13 13 0 0 1 15 2h86" fill="none" stroke="url(#portfolioAccent)" stroke-width="3" stroke-linecap="round"/>
+  <g class="content">
+    <text x="26" y="35" fill="#39d353" font-size="13">&lt;projects /&gt;</text>
+    <text x="26" y="76" fill="#f0f6fc" font-size="27" font-weight="700">Portfolio</text>
+    <text x="26" y="103" fill="#8b949e" font-size="13">Projects &amp; experiments</text>
+    <text x="26" y="129" fill="#6e7681" font-size="12">cordukfurkanemre.com</text>
+    <g class="arrow"><rect x="326" y="91" width="34" height="34" rx="8" fill="#161b22" stroke="#30363d"/><text x="336" y="115" fill="#39d353" font-size="20">↗</text></g>
+  </g>
+</svg>
